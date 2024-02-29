@@ -1,0 +1,55 @@
+﻿
+@model ML.Hospital
+@{
+    ViewData["Title"] = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Form</h1>
+
+<div class=" container-fluid">
+
+    @using (Html.BeginForm("Form", "Hospital", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-control">
+            @Html.HiddenFor(model => model.IdHospital)
+            <div class="row">
+                <div class="col-3">
+                    @Html.LabelFor(model => model.Nombre)
+                    @Html.TextBoxFor(model => model.Nombre, new{ @class = "form-control"} )
+                </div>
+                <div class="col-3">
+                    @Html.LabelFor(model => model.Direccion)
+                    @Html.TextBoxFor(model => model.Direccion, new{ @class = "form-control"} )
+                </div>
+                <div class="col-3">
+                    @Html.LabelFor(model => model.AñoCostruccion)
+                    @Html.TextBoxFor(model => model.AñoCostruccion, new{ @class = "form-control"} )
+                </div>
+                <div class="col-3">
+                    @Html.LabelFor(model => model.Capacidad)
+                    @Html.TextBoxFor(model => model.Capacidad, new{ @class = "form-control"} )
+                </div>
+                <div class="col-3">
+                    @Html.LabelFor(model => model.Especialidad.IdEspecialidad)
+                    @Html.TextBoxFor(model => model.Especialidad.IdEspecialidad, new{ @class = "form-control"} )
+                </div>
+
+                <div class="row p-3">
+                    <div class="col">
+                        @if (Model.IdHospital != 0)
+                        {
+                            <input type="submit" class="btn btn-outline-info" value="Actualizar" />
+                        }
+                        else
+                        {
+                            <input type="submit" class="btn btn-outline-info" value="Guardar" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    
+</div>
+
